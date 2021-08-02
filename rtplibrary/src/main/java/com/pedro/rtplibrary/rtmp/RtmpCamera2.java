@@ -29,17 +29,19 @@ public class RtmpCamera2 extends Camera2Base {
 
   private ArrayList<SrsFlvMuxer> srsFlvMuxer ;
   int noOfStreams;
+
+
   /**
    * @deprecated This view produce rotations problems and could be unsupported in future versions.
    * Use {@link Camera2Base#Camera2Base(OpenGlView)} or {@link Camera2Base#Camera2Base(LightOpenGlView)}
    * instead.
    */
   @Deprecated
-  public RtmpCamera2(SurfaceView surfaceView, ConnectCheckerRtmp connectChecker) {
+  public RtmpCamera2(SurfaceView surfaceView, ConnectCheckerRtmp connectChecker,int noOfStreams) {
     super(surfaceView);
-    srsFlvMuxer.set(1, new SrsFlvMuxer(connectChecker));
+    this.noOfStreams=noOfStreams;
     for(int i=0;i<noOfStreams;i++){
-      srsFlvMuxer.set(i, new SrsFlvMuxer((ConnectCheckerRtmp) this));
+      srsFlvMuxer.set(i, new SrsFlvMuxer(connectChecker));
     }
   }
 
@@ -49,9 +51,9 @@ public class RtmpCamera2 extends Camera2Base {
    * instead.
    */
   @Deprecated
-  public RtmpCamera2(TextureView textureView, ConnectCheckerRtmp connectChecker) {
+  public RtmpCamera2(TextureView textureView, ConnectCheckerRtmp connectChecker,int noOfStreams) {
     super(textureView);
-
+    this.noOfStreams=noOfStreams;
     for(int i=0;i<noOfStreams;i++){
       srsFlvMuxer.set(i, new SrsFlvMuxer(connectChecker));
     }
@@ -59,25 +61,25 @@ public class RtmpCamera2 extends Camera2Base {
 
   }
 
-  public RtmpCamera2(OpenGlView openGlView, ConnectCheckerRtmp connectChecker) {
+  public RtmpCamera2(OpenGlView openGlView, ConnectCheckerRtmp connectChecker,int noOfStreams) {
     super(openGlView);
-
+    this.noOfStreams=noOfStreams;
     for(int i=0;i<noOfStreams;i++){
       srsFlvMuxer.set(i, new SrsFlvMuxer(connectChecker));
     }
   }
 
-  public RtmpCamera2(LightOpenGlView lightOpenGlView, ConnectCheckerRtmp connectChecker) {
+  public RtmpCamera2(LightOpenGlView lightOpenGlView, ConnectCheckerRtmp connectChecker,int noOfStreams) {
     super(lightOpenGlView);
-
+    this.noOfStreams=noOfStreams;
     for(int i=0;i<noOfStreams;i++){
       srsFlvMuxer.set(i, new SrsFlvMuxer(connectChecker));
     }
   }
 
-  public RtmpCamera2(Context context, boolean useOpengl, ConnectCheckerRtmp connectChecker) {
+  public RtmpCamera2(Context context, boolean useOpengl, ConnectCheckerRtmp connectChecker,int noOfStreams) {
     super(context, useOpengl);
-
+    this.noOfStreams=noOfStreams;
     for(int i=0;i<noOfStreams;i++){
       srsFlvMuxer.set(i, new SrsFlvMuxer(connectChecker));
 
@@ -320,7 +322,10 @@ public class RtmpCamera2 extends Camera2Base {
 
   @Override
   public void setLogs(boolean enable) {
-    for (int i = 0; i < noOfStreams; i++) {
+    for(int i=0;i<noOfStreams;i++){
       srsFlvMuxer.get(i).setLogs(enable);
     }
-  }}
+
+  }
+}
+
