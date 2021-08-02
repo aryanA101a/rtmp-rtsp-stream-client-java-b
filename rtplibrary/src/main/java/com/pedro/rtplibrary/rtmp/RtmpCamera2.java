@@ -27,7 +27,7 @@ import java.util.List;
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class RtmpCamera2 extends Camera2Base {
 
-  private ArrayList<SrsFlvMuxer> srsFlvMuxer ;
+  private ArrayList<SrsFlvMuxer> srsFlvMuxer= new ArrayList<SrsFlvMuxer>() ;
   int noOfStreams;
 
 
