@@ -72,6 +72,8 @@ public class RtmpCamera2 extends Camera2Base {
   public RtmpCamera2(LightOpenGlView lightOpenGlView, ConnectCheckerRtmp connectChecker,int noOfStreams) {
     super(lightOpenGlView);
     this.noOfStreams=noOfStreams;
+    System.out.println(noOfStreams);
+
     for(int i=0;i<noOfStreams-1;i++){
       srsFlvMuxer.set(i, new SrsFlvMuxer(connectChecker));
     }
