@@ -216,6 +216,10 @@ public class RtmpCamera2 extends Camera2Base {
 
   @Override
   protected void startStreamRtp(List<String> url) {
+    System.out.println("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvXXXXXXXXXXXXXXXXXXXXXXXvvvvvvvvvv");
+    System.out.println("startStreamRtp");
+    System.out.println(noOfStreams);
+
     if (videoEncoder.getRotation() == 90 || videoEncoder.getRotation() == 270) {
       for(int i=0;i<noOfStreams-1;i++){
         srsFlvMuxer.get(i).setVideoResolution(videoEncoder.getHeight(), videoEncoder.getWidth());
@@ -228,7 +232,11 @@ public class RtmpCamera2 extends Camera2Base {
 
     }
     for(int i=0;i<noOfStreams-1;i++){
+
       srsFlvMuxer.get(i).start(url.get(i));
+      System.out.println("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvXXXXXXXXXXXXXXXXXXXXXXXvvvvvvvvvv");
+      System.out.println("startSrsflvmuxer");
+      System.out.println(noOfStreams);
     }
 
   }
