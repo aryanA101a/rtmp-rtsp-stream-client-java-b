@@ -219,6 +219,13 @@ public class RtmpCamera2 extends Camera2Base {
 
   @Override
   protected void startStreamRtp(List<String> url) {
+
+    System.out.println(noOfStreams);
+    noOfStreams=url.size();
+    System.out.println(url.size());
+    System.out.println(noOfStreams);
+
+
     System.out.println("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvXXXXXXXXXXXXXXXXXXXXXXXvvvvvvvvvv");
     System.out.println("startStreamRtp");
     System.out.println(noOfStreams);
