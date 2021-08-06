@@ -19,7 +19,7 @@ public class ManagerRender {
 
   //Increase it to render more than 1 filter and set filter by position.
   // You must modify it before create your rtmp or rtsp object.
-  public static int numFilters = 1;
+  public static int numFilters = 6;
 
   private CameraRender cameraRender;
   private List<BaseFilterRender> baseFilterRender = new ArrayList<>(numFilters);
